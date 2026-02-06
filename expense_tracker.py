@@ -17,11 +17,14 @@ class ExpenseManager:
         exp.add_to_file()
 
     def view_expense(self):
+        total = 0
         with open("expense.txt","r") as expenses:
             for exp in expenses:
                 category, amount = exp.strip().split(",")
                 print("Category: ", category + "||" + "Amount : ", amount)
-    
+                amount = int(amount)
+                total += amount
+        print("Total : " , total)
 
     def view_menu(self):
         print("1. Add Expense")
