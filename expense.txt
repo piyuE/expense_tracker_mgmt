@@ -1,0 +1,4 @@
+food,1000
+travel,2000
+shop,3000
+gro,3000
