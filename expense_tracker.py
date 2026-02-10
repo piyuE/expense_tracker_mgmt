@@ -26,10 +26,27 @@ class ExpenseManager:
                 total += amount
         print("Total : " , total)
 
+    def category_summary(self):
+        summary = {}
+
+        try:
+            with open("expense.txt", "r") as f:
+                for line in f:
+                    category, amount = line.strip().split(",")
+                    amount = int(amount)
+                    summary[category] = summary.get(category,0)+amount
+        except FileNotFoundError:
+            print("No data")
+
+      
+        #for cat, total in summary.items():
+            #print(cat, ":", total)
+
     def view_menu(self):
         print("1. Add Expense")
         print("2. View Expenses")
-        print("3. Exit")
+        print("3. Category Summary")
+        print("4. Exiting")
 
     def select_option(self,option):
         match option:
@@ -40,10 +57,10 @@ class ExpenseManager:
                 self.view_expense()
                 return True
             case 3:
-                print("Exiting")
-                return False
+                self.category_summary()
+                return True
             case _:
-                print("Invalid choice")
+                print("Exiting")
                 return False
 print("Choose from the below menu :")
 expMag = ExpenseManager()
