@@ -38,9 +38,8 @@ class ExpenseManager:
         except FileNotFoundError:
             print("No data")
 
-      
-        #for cat, total in summary.items():
-            #print(cat, ":", total)
+        for cat, total in summary.items():
+            print(cat, ":", total)
 
     def view_menu(self):
         print("1. Add Expense")
